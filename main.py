@@ -1,5 +1,6 @@
 from flask import Flask, redirect
 from utils.dockerManager import DockerManager
+from utils.IPconfig import IPConfig
 import time
 app = Flask(__name__)
 X = DockerManager("edm", "v0", "haha")
@@ -19,7 +20,7 @@ def allocate():
     print(routeCheck)
     time.sleep(0.8)
     print(X.ShowContainerList())
-    return redirect("http://127.0.0.1:{}".format(PortNow))
+    return redirect("http://{}:{}".format(IPConfig(), PortNow))
 
 
 if __name__ == '__main__':
