@@ -1,0 +1,6 @@
+flask
+wtforms
+gunicorn
+gevent
+requests
+flask_wtf
