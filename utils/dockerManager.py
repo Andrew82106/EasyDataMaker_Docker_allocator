@@ -44,6 +44,10 @@ class DockerManager:
         return DockerList
 
     def StartContainer(self, ContainerID: str, interPort: int):
+        ContainerDict = self.ShowContainerList()
+        if self.KeyWord + str(ContainerID) in ContainerDict:
+            self.StopContainer(self.KeyWord + str(ContainerID))
+            self.RemoveContainer(self.KeyWord + str(ContainerID))
         return os.popen("docker run --name {} -d -p {}:{} {}:{}".format(self.KeyWord + str(ContainerID), interPort, self.localPort, self.baseImagenName, self.baseImagenTag)).read()
 
     def StopContainer(self, ContainerName: str):
