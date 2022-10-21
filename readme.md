@@ -16,12 +16,5 @@
 
 ```bash
 pip install -r requirements.txt
-gunicorn main:app -c ./gunicorn.conf.py
-```
-
-或者也可以搞成docker试试：
-
-```bash
-sudo docker build -f ./DockerFile -t allocator:v0 .
-docker run -d -p 8080:4352 allocator:v0
+gunicorn main:app -c ./gunicorn.conf.py -D 
 ```
